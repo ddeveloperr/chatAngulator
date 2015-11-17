@@ -1,10 +1,19 @@
-<h4>Dobrodosli {{username}}, odaberite zeljeni chat kanal: [<a href="#">Odjavite se</a>]</h4>
+<h4>Dobrodosli {{data.username}}, odaberite zeljeni chat kanal: [<a href="#/join">Odjavite se</a>]</h4>
 
 <ul class="list-unlisted list-inline">
-  <li class="roomlable" ng-repeat="channel in channels"></li>
+
+  <li class="roomlable" ng-repeat="channel in channels">
+    <a class="btn btn-info" href="" ng-class="{'label-default': user != data.username,
+    'label-default': (channel != selectedChannel), 'label-success':(channel ==
+     selectedChannel)}" ng-click="subscribe(channel)">
+     <i class="fa" ng-class="{'fa-spin':(channel == selectedChannel)}"></i>
+     {{channel}}
+     </a>
+     </li>
+
   <li class"roomlable">
     <a class="btn btn-default" href="#" ng-click="showCreate = !showCreate">
-      <i class="fa fa-magic"></i> Create New...
+      <i class="fa fa-magic"></i> Kreiraj Novu...
     </a>
   </li>
   <div ng-show="showCreate">
@@ -26,7 +35,14 @@
   <div class="col-md-2">
     <small class="marker">Korisnici u chat sobi</small>
       <ul class="list-unstyled">
-        <li ng-repeat="user in users"></li>
+        <li ng-repeat="user in users">
+          <span class="label btn-mini userlabel" ng-class="{'label-default': user != data.username,
+          'label-success': (user == data.username)}" title="(Lokacija:
+          {{userData[user].city || "unknown"}})">
+            <i class="fa fa-user"></i>
+            {{user}}
+          </span>
+        </li>
       </ul>
 
   </div>

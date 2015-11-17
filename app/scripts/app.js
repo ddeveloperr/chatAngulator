@@ -6,7 +6,7 @@
  * @description
  * # chatAngulatorApp
  *
- * Main module of the application.
+ * Main module od application.
  */
 angular
   .module('chatAngulatorApp', [
